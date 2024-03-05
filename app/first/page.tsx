@@ -1,4 +1,4 @@
-import { AppNavigation } from "./_components";
+import { AppNavigation } from "../_components";
 
 export default function Home() {
   return (
