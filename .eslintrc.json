@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["@dcp", "next/core-web-vitals"],
+  "ignorePatterns": ["*.config.js", "**/generated/*", "**/graphql.ts"],
+  "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/anchor-is-valid": "off"
+  }
 }
