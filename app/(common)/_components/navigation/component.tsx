@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}
     >
-      <PageLink href="/">TOP</PageLink>
+      <PageLink href='/'>TOP</PageLink>
       <Spacer />
-      <PageLink href="/first">FIRST</PageLink>
+      <PageLink href='/first'>FIRST</PageLink>
     </div>
   );
 }
@@ -28,14 +28,14 @@ function PageLink({
   const pathname = usePathname();
 
   return pathname === href ? (
-    <text style={{ fontSize: "24px" }}>{children}</text>
+    <text style={{ fontSize: '24px' }}>{children}</text>
   ) : (
-    <a href={href} style={{ fontSize: "24px" }}>
+    <a href={href} style={{ fontSize: '24px' }}>
       {children}
     </a>
   );
 }
 
 function Spacer() {
-  return <div style={{ height: "8px" }} />;
+  return <div style={{ height: '8px' }} />;
 }

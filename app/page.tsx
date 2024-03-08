@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
 import {
   Authenticator,
   ThemeProvider,
   translations,
   useTheme,
-} from "@aws-amplify/ui-react";
-import { Amplify } from "aws-amplify";
-import "@aws-amplify/ui-react/styles.css";
-import { I18n } from "aws-amplify/utils";
-import Image from "next/image";
-import { CommonConst } from "./(common)/_constants";
-import { L10n } from "./(common)/_constants/l10n";
-import { AuthTheme } from "./(common)/_styles/auth";
+} from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import '@aws-amplify/ui-react/styles.css';
+import { I18n } from 'aws-amplify/utils';
+import Image from 'next/image';
+import { CommonConst } from './(common)/_constants';
+import { L10n } from './(common)/_constants/l10n';
+import { AuthTheme } from './(common)/_styles/auth';
 
 Amplify.configure({
   Auth: {
@@ -23,7 +23,7 @@ Amplify.configure({
   },
 });
 I18n.putVocabularies(translations);
-I18n.setLanguage("ja");
+I18n.setLanguage('ja');
 I18n.putVocabularies(L10n);
 
 export default function Home() {
@@ -35,10 +35,10 @@ export default function Home() {
   return (
     <div
       style={{
-        height: "96dvh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        height: '96dvh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <ThemeProvider theme={AuthTheme}>
@@ -46,7 +46,7 @@ export default function Home() {
           {({ signOut, user }) => (
             <main>
               <h1>Hello {user?.username}</h1>
-              <button type="button" onClick={signOut}>
+              <button type='button' onClick={signOut}>
                 Sign out
               </button>
             </main>
@@ -62,17 +62,17 @@ function LoginHeader() {
   return (
     <div
       style={{
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: tokens.space.large.value,
       }}
     >
       <Image
-        alt=""
+        alt=''
         height={40}
         width={40}
-        src="https://docs.amplify.aws/assets/logo-dark.svg"
+        src='https://docs.amplify.aws/assets/logo-dark.svg'
       />
       <text>{CommonConst.APP_TITLE}</text>
     </div>

@@ -1,1 +1,2 @@
-export { default as AppNavigation } from './navigation/component'
+export { default as AppHeader } from './header';
+export { default as AppNavigation } from './navigation/component';
