@@ -4,15 +4,18 @@ import {
   Authenticator,
   ThemeProvider,
   translations,
-  useTheme,
 } from '@aws-amplify/ui-react';
+import { Flex, Image, MantineProvider, Text } from '@mantine/core';
+import '@mantine/core/styles.css';
 import { Amplify } from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import { I18n } from 'aws-amplify/utils';
-import Image from 'next/image';
 import { CommonConst } from './(common)/_constants';
 import { L10n } from './(common)/_constants/l10n';
+import { APP_PRIMARY_COLOR, APP_SECONDARY_COLOR } from './(common)/_styles/app';
 import { AuthTheme } from './(common)/_styles/auth';
+import ArticleListPage from './(pages)/articles';
+import { AppNavigation } from './_components';
 
 Amplify.configure({
   Auth: {
@@ -36,45 +39,51 @@ export default function Home() {
     <div
       style={{
         height: '96dvh',
+        width: '100vw',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <ThemeProvider theme={AuthTheme}>
-        <Authenticator hideSignUp components={components}>
-          {({ signOut, user }) => (
-            <main>
-              <h1>Hello {user?.username}</h1>
-              <button type='button' onClick={signOut}>
-                Sign out
-              </button>
-            </main>
-          )}
-        </Authenticator>
-      </ThemeProvider>
+      <MantineProvider>
+        <ThemeProvider theme={AuthTheme}>
+          <Authenticator hideSignUp components={components}>
+            {(authProps) => (
+              <AppNavigation
+                logout={() => authProps.signOut?.()}
+                isLoading={false}
+              >
+                <ArticleListPage />
+              </AppNavigation>
+            )}
+          </Authenticator>
+        </ThemeProvider>
+      </MantineProvider>
     </div>
   );
 }
 
 function LoginHeader() {
-  const { tokens } = useTheme();
   return (
-    <div
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: tokens.space.large.value,
-      }}
+    <Flex
+      display='flex'
+      w='100%'
+      px={12}
+      direction='row'
+      align='center'
+      justify='center'
+      gap='md'
+      bg={APP_SECONDARY_COLOR}
     >
       <Image
         alt=''
-        height={40}
-        width={40}
+        height={24}
+        width={24}
         src='https://docs.amplify.aws/assets/logo-dark.svg'
       />
-      <text>{CommonConst.APP_TITLE}</text>
-    </div>
+      <Text c={APP_PRIMARY_COLOR} size='xl'>
+        {CommonConst.APP_TITLE}
+      </Text>
+    </Flex>
   );
 }
