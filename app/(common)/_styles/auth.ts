@@ -6,7 +6,6 @@ export const AuthTheme: Theme = {
   name: 'custome-theme',
   tokens: {
     components: {
-      authenticator: {},
       button: {
         fontWeight: { value: 700 },
         primary: {
