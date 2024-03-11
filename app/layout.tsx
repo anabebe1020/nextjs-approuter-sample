@@ -1,7 +1,10 @@
+import { Box, MantineProvider } from '@mantine/core';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
 import { CommonConst } from './(common)/_constants';
+import { AuthProvider } from './_components';
+import '@mantine/core/styles.css';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +20,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja'>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <MantineProvider>
+          <AuthProvider>
+            <Box
+              style={{
+                height: '96dvh',
+                width: '100vw',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {children}
+            </Box>
+          </AuthProvider>
+        </MantineProvider>
+      </body>
     </html>
   );
 }

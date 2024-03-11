@@ -1,12 +1,12 @@
 'use client';
 
 import { Button } from '@mantine/core';
-import { AppNavigation } from './(common)/_components';
-import AppBody from './(common)/_components/body';
+import { AppNavigation } from '@/app/(common)/_components';
+import AppBody from '@/app/(common)/_components/body';
 
-const PAGE_TITLE = '記事一覧';
+const PAGE_TITLE = 'ゲーム一覧';
 
-export default function Home() {
+export default function GameListPage() {
   return (
     <AppNavigation>
       <AppBody
