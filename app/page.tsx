@@ -12,7 +12,7 @@ import '@aws-amplify/ui-react/styles.css';
 import { I18n } from 'aws-amplify/utils';
 import { CommonConst } from './(common)/_constants';
 import { L10n } from './(common)/_constants/l10n';
-import { APP_PRIMARY_COLOR, APP_SECONDARY_COLOR } from './(common)/_styles/app';
+import APP_STYLES from './(common)/_styles/app';
 import { AuthTheme } from './(common)/_styles/auth';
 import ArticleListPage from './(pages)/articles';
 import { AppNavigation } from './_components';
@@ -50,8 +50,8 @@ export default function Home() {
           <Authenticator hideSignUp components={components}>
             {(authProps) => (
               <AppNavigation
-                logout={() => authProps.signOut?.()}
                 isLoading={false}
+                logout={() => authProps.signOut?.()}
               >
                 <ArticleListPage />
               </AppNavigation>
@@ -68,20 +68,15 @@ function LoginHeader() {
     <Flex
       display='flex'
       w='100%'
-      px={12}
+      p={12}
       direction='row'
       align='center'
       justify='center'
       gap='md'
-      bg={APP_SECONDARY_COLOR}
+      bg={APP_STYLES.color.primary}
     >
-      <Image
-        alt=''
-        height={24}
-        width={24}
-        src='https://docs.amplify.aws/assets/logo-dark.svg'
-      />
-      <Text c={APP_PRIMARY_COLOR} size='xl'>
+      <Image alt='' height={24} width={24} src='/app_icon.png' />
+      <Text c={APP_STYLES.color.huddleYellow} size='xl'>
         {CommonConst.APP_TITLE}
       </Text>
     </Flex>

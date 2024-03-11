@@ -1,4 +1,11 @@
-import { AppShell, Center, Flex, Text, UnstyledButton } from '@mantine/core';
+import {
+  AppShell,
+  Box,
+  Center,
+  Flex,
+  Text,
+  UnstyledButton,
+} from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
@@ -14,6 +21,7 @@ import {
   SportsFootballIcon,
 } from '@/app/(common)/_icons';
 import Routes from '@/app/(common)/_routes';
+import APP_STYLES from '@/app/(common)/_styles/app';
 
 type NavItem = {
   label: string;
@@ -98,14 +106,59 @@ const NAV_ITEMS: NavItem[] = [
   },
 ];
 
+const STASTA_NAV_ITEMS: NavItem[] = [
+  {
+    label: 'ユーザー',
+    hrefs: [
+      Routes.TopPage.path,
+      //
+    ],
+    icon: <PersonSearchIcon />,
+  },
+];
+
 export default function NavigationBar() {
+  const navLinks = NAV_ITEMS.map((item) => (
+    <NavigationItem key={item.hrefs[0]} item={item} />
+  ));
+  const stastaNavLinks = STASTA_NAV_ITEMS.map((item) => (
+    <NavigationItem key={item.hrefs[0]} item={item} />
+  ));
+
+  return (
+    <AppShell.Navbar>
+      <Flex direction='column' p={12} gap={0}>
+        <NavigationCategory label='HUDDLE' />
+        {navLinks}
+        <NavigationCategory label='スタスタ' />
+        {stastaNavLinks}
+      </Flex>
+    </AppShell.Navbar>
+  );
+}
+
+function NavigationCategory({ label }: { label: string }) {
+  return (
+    <Box px={12} py={12} bg={APP_STYLES.color.primary}>
+      <Text c={APP_STYLES.color.huddleYellow} fw={700}>
+        {label}
+      </Text>
+    </Box>
+  );
+}
+
+type HeaderMenuProps = {
+  item: NavItem;
+};
+
+function NavigationItem(props: HeaderMenuProps) {
   const pathname = usePathname();
 
-  const navLinks = NAV_ITEMS.map((item) => (
+  return (
     <UnstyledButton
-      key={item.label}
+      key={props.item.label}
       component={Link}
-      href={item.hrefs[0]}
+      href={props.item.hrefs[0]}
       px={12}
       styles={(theme) => ({
         root: {
@@ -113,26 +166,16 @@ export default function NavigationBar() {
           '&:hover': {
             backgroundColor: theme.colors.yellow[1],
           },
-          backgroundColor: item.hrefs.includes(pathname)
+          backgroundColor: props.item.hrefs.includes(pathname)
             ? theme.colors.yellow[1]
             : 'white',
         },
       })}
     >
       <Flex direction='row' py={12}>
-        <Center>{item.icon}</Center>
-        <Text ml='16px'>{item.label}</Text>
+        <Center>{props.item.icon}</Center>
+        <Text ml='16px'>{props.item.label}</Text>
       </Flex>
     </UnstyledButton>
-  ));
-
-  return (
-    <AppShell.Navbar>
-      <AppShell.Section grow>
-        <Flex direction='column' p={12} gap={0}>
-          {navLinks}
-        </Flex>
-      </AppShell.Section>
-    </AppShell.Navbar>
   );
 }
