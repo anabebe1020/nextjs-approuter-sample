@@ -1,3 +1,2 @@
-export { default as AppNavigation } from './navigation';
-export { default as NavigationBar } from './navigation/bar';
-export { default as NavigationHeader } from './navigation/header';
+// eslint-disable-next-line import/prefer-default-export
+export { default as AuthProvider } from './auth';
