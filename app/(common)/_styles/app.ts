@@ -11,6 +11,7 @@ const APP_STYLES = {
   },
   size: {
     headerHeight: 64,
+    navBarWidth: 200,
     formWidthSmall: 160,
   },
 };
