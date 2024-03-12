@@ -23,7 +23,7 @@ export default function AppNavigation(props: PropsWithChildren) {
     <AppShell
       display='flex'
       header={{ height: APP_STYLES.size.headerHeight }}
-      navbar={{ width: 200, breakpoint: 'sm' }}
+      navbar={{ width: APP_STYLES.size.navBarWidth, breakpoint: 'sm' }}
     >
       <NavigationHeader logout={handleLogout} />
       <NavigationBar />
@@ -32,7 +32,7 @@ export default function AppNavigation(props: PropsWithChildren) {
           fluid
           pt={0}
           px={0}
-          w='80dvw'
+          w={`calc(100dvW - ${APP_STYLES.size.navBarWidth}px)`}
           h={`calc(100dvH - ${APP_STYLES.size.headerHeight}px)`}
           bg={APP_STYLES.color.background}
         >
