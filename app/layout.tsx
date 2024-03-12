@@ -1,4 +1,5 @@
 import { Box, MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { CommonConst } from './(common)/_constants';
@@ -22,19 +23,21 @@ export default function RootLayout({
     <html lang='ja'>
       <body className={inter.className}>
         <MantineProvider>
-          <AuthProvider>
-            <Box
-              style={{
-                height: '96dvh',
-                width: '100vw',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              {children}
-            </Box>
-          </AuthProvider>
+          <ModalsProvider>
+            <AuthProvider>
+              <Box
+                style={{
+                  height: '96dvh',
+                  width: '100vw',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {children}
+              </Box>
+            </AuthProvider>
+          </ModalsProvider>
         </MantineProvider>
       </body>
     </html>
