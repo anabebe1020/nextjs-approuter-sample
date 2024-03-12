@@ -1,4 +1,5 @@
 import ArticleIcon from '@mui/icons-material/Article';
+import ClearIcon from '@mui/icons-material/Clear';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -12,6 +13,7 @@ import SportsFootballIcon from '@mui/icons-material/SportsFootball';
 
 export {
   ArticleIcon,
+  ClearIcon,
   EventNoteIcon,
   ExitToAppIcon,
   GroupsIcon,
